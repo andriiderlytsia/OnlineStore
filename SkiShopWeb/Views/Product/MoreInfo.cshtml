@@ -1,0 +1,64 @@
+﻿@model Product
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div style="padding:0px 15% 0px 15%">
+    <div class="row mt-1 mb-5" >
+
+        <div class="col-lg-6">
+            <img style="width:100%" src="@Model.ProductImg" />
+        </div>
+        <div class="col-lg-6">
+            <h4>@Model.ProductName</h4>
+            <br />
+            <p>Brand : @Model.Brand.BrandName</p> 
+            <br />
+            <p> @Model.ProductDescription</p>
+            <br />
+            <div style="display:flex; justify-content:space-between">
+                <p>Price : @Model.Price$</p>
+                <a href="/product/SignUp/@Model.ProductId" class="btn btn-primary">Buy</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-1 mb-5">
+        <div @*class="d-flex justify-content-center row"*@>
+            <div class="col-md-12">
+                <div class="d-flex flex-column comment-section">
+
+                    @foreach (var com in Model.Comments)
+                    {
+
+                        <div class="bg-white p-2">
+                            <div class="d-flex flex-row user-info">
+                                <img class="rounded-circle" src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" width="40">
+                                <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Marry Andrews</span><span class="date text-black-50">Shared publicly - Jan 2020</span></div>
+                            </div>
+                            <div class="mt-2">
+                                <p class="comment-text">@com.Message</p>
+                            </div>
+                        </div>
+                    }
+
+
+                    <!--<form method="post"  action ="PostComment">
+                                             
+                            <input type="text" class="form-control" name="Comment" >
+                        <input type ="submit" value="Submit"  />--> 
+                            @*<a href="/product/PostComment/@Model.ProductId" class="btn btn-primary">More info</a>*@                       
+                        @*<button type="submit" class="btn btn-primary" action ="PostComment">Add comment</button>*@
+                    <!--</form>-->
+
+                    <div class="bg-light p-2">
+                        <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/user.png" width="40"><textarea cols="100" class="form-control ml-1 shadow-none textarea"></textarea></div>
+                        <div class="mt-2 text-right">
+                            <button class="btn btn-primary btn-sm shadow-none" type="button">Post comment</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
